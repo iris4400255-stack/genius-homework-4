@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Beauty Zone</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <div class="hero-wrapper">
@@ -95,17 +99,19 @@
       </div>
       <section class="hero" id="hero">
         <div class="container">
-          <p class="hero__pretitle">Косметологічна клініка</p>
-          <h1 class="hero__title">
-            <span class="hero__title-accent"
-              >Beauty <br />
-              zone</span
-            >
-          </h1>
-          <button class="button" type="button">Замовити дзвінок</button>
-          <p class="hero__text">
-            Запишись та отримай безкоштовну консультацію нашого косметолога
-          </p>
+          <div class="wrapper">
+            <p class="hero__pretitle">Косметологічна клініка</p>
+            <h1 class="hero__title">
+              <span class="hero__title-accent"
+                >Beauty <br />
+                zone</span
+              >
+            </h1>
+            <button class="button" type="button">Замовити дзвінок</button>
+            <p class="hero__text">
+              Запишись та отримай безкоштовну консультацію нашого косметолога
+            </p>
+          </div>
         </div>
       </section>
     </div>
@@ -182,52 +188,47 @@
           <h2 class="section-title procedures__title">
             Наші <span class="procedures__accent">процедури</span>
           </h2>
-
-          <div class="procedures__slider">
-            <button
-              class="procedures__button procedures__button--prev"
-              type="button"
-              aria-label="Попередня процедура"
-            >
-              ←
-            </button>
-
-            <ul class="procedures__list">
-              <li class="procedures__card">
+          <button
+            class="procedures__button procedures__button--prev"
+            type="button"
+            aria-label="Попередня процедура"
+          >
+            ←
+          </button>
+          <div class="procedures__slider swiper">
+            <ul class="procedures__list swiper-wrapper">
+              <li class="procedures__card swiper-slide">
                 <img src="images/маски.svg" alt="Маски для догляду" />
-                <h3 class="procedures__card-title">Маски</h3>
-                <p class="procedures__card-text">Догляд за шкірою обличчя</p>
               </li>
-
-              <li class="procedures__card">
+              <li class="procedures__card swiper-slide">
                 <img src="images/інєкції.svg" alt="Ін'єкційні процедури" />
-                <h3 class="procedures__card-title">Ін'єкції</h3>
-                <p class="procedures__card-text">
-                  Професійний догляд та омолодження
-                </p>
               </li>
-
-              <li class="procedures__card">
+              <li class="procedures__card swiper-slide">
                 <img src="images/чистка.svg" alt="Чистка обличчя" />
-                <h3 class="procedures__card-titl">Чистка</h3>
-                <p class="procedures__card-text">
-                  Очищення та відновлення шкіри
-                </p>
+              </li>
+              <li class="procedures__card swiper-slide">
+                <img src="images/маски.svg" alt="Маски для догляду" />
+              </li>
+              <li class="procedures__card swiper-slide">
+                <img src="images/інєкції.svg" alt="Ін'єкційні процедури" />
+              </li>
+              <li class="procedures__card swiper-slide">
+                <img src="images/чистка.svg" alt="Чистка обличчя" />
               </li>
             </ul>
-            <div class="procedures__pagination">
-              <span class="procedures__dot procedures__dot--active"></span>
-              <span class="procedures__dot"></span>
-              <span class="procedures__dot"></span>
-            </div>
-            <button
-              class="procedures__button procedures__button--next"
-              type="button"
-              aria-label="Наступна процедура"
-            >
-              →
-            </button>
           </div>
+          <div class="procedures__pagination">
+            <span class="procedures__dot procedures__dot--active"></span>
+            <span class="procedures__dot"></span>
+            <span class="procedures__dot"></span>
+          </div>
+          <button
+            class="procedures__button procedures__button--next"
+            type="button"
+            aria-label="Наступна процедура"
+          >
+            →
+          </button>
         </div>
       </section>
       <section id="contacts" class="section contacts">
@@ -236,7 +237,16 @@
             Як нас <span class="contacts__accept">знайти</span>
           </h2>
           <div class="contacts__content">
-            <img class="contacts__image" src="images/карта.svg" alt="карта" />
+            <iframe
+              class="contacts__map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.4762516521823!2d30.517846876916956!3d50.45085558733427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce50851426df%3A0x58296d35bd78df01!2z0L_QtdGALiDQotCw0YDQsNGB0LAg0KjQtdCy0YfQtdC90LrQviwgNSwg0JrQuNC10LIsIDAyMDAw!5e0!3m2!1sru!2sua!4v1790531984281!5m2!1sru!2sua"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
             <form class="contacts__form">
               <h3 class="contacts__form-title">
                 Запишіться <span>безкоштовно</span> та отримайте подарунок
@@ -392,6 +402,19 @@
         </form>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper(".procedures__slider", {
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 16,
+        navigation: {
+          nextEl: ".procedures__button--next",
+          prevEl: ".procedures__button--prev",
+        },
+        pagination: { el: ".procedures__pagination", clickable: true },
+      });
+    </script>
     <script src="./modal.js"></script>
     <script src="./mobile-menu.js"></script>
   </body>
